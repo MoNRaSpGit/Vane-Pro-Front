@@ -1,0 +1,20 @@
+.bienvenida-container {
+    background: none; /* Fondo neutral */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Mantiene la sombra */
+}
+
+/* Estilo para el botón de cambio de formulario */
+.bienvenida-container .btn-cambiar-formulario {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: transform 0.2s ease; /* Solo transición para el tamaño */
+}
+
+.bienvenida-container .btn-cambiar-formulario:hover {
+    transform: scale(1.05); /* Pequeño aumento al pasar el cursor */
+}

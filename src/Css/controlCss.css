@@ -1,0 +1,230 @@
+/* controlCss.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Fondo general del contenedor raíz */
+.control-form-root {
+    --color-primary: #1e3d58; /* Azul grisáceo oscuro */
+    --color-secondary: #30475e; /* Gris azulado */
+
+    min-height: 100vh;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Contenedor del formulario */
+.control-form {
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo translúcido */
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+/* Encabezado */
+.control-form .titulo-formulario {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+}
+
+/* Inputs y Selects */
+.control-form input,
+.control-form select,
+.control-form textarea {
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo translúcido */
+    color: white;
+    border: 1px solid #a9a9a9;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer; /* Indica que el input es clicable */
+    width: 100%;
+}
+
+.control-form input:focus,
+.control-form select:focus,
+.control-form textarea:focus {
+    background-color: rgba(255, 255, 255, 0.3); /* Más claro al focus */
+    border-color: white;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Botón */
+.control-form button.btn {
+    background-color: #3a6186;
+    color: white;
+    border-radius: 5px;
+}
+
+/* Inputs en la tabla de control */
+.control-form .control-input {
+    text-align: center; /* Centra el texto */
+    padding: 10px; /* Espaciado interno */
+    width: 100%; /* Asegura que el input ocupe todo el espacio de la celda */
+    box-sizing: border-box; /* Asegura consistencia de dimensiones */
+    color: black; /* Color del texto */
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo translúcido */
+    border: 1px solid #ccc; /* Borde estándar */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Indica que el input es clicable */
+}
+
+/* Inputs toggled */
+.input-correct-toggled {
+    background-color: #90EE90 !important; /* Verde claro */
+}
+
+.input-incorrect-toggled {
+    background-color: #FF7F7F !important; /* Rojo claro */
+}
+
+/* Tabla de control */
+.control-form .table-control {
+    table-layout: fixed; /* Asegura que los anchos se respeten */
+    width: 100%;
+}
+
+.control-form .table-control th,
+.control-form .table-control td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    overflow: hidden; /* Evita que el contenido sobresalga */
+}
+
+/* Estilos específicos para columnas */
+.control-form .table-control th.item-principal,
+.control-form .table-control td.item-principal {
+    width: 20%;
+    font-size: 1.2rem; /* Tamaño de fuente más grande */
+    font-weight: bold; /* Texto en negrita */
+    color: black; /* Color del texto */
+}
+
+.control-form .table-control th.item-secundario,
+.control-form .table-control td.item-secundario {
+    width: 40%;
+    font-size: 1.2rem; /* Tamaño de fuente más grande */
+    font-weight: 600; /* Peso de fuente más grueso */
+    color: #333333; /* Color más oscuro */
+}
+
+.control-form .table-control th.correctos,
+.control-form .table-control td.correctos {
+    width: 20%;
+}
+
+.control-form .table-control th.incorrectos,
+.control-form .table-control td.incorrectos {
+    width: 20%;
+}
+
+/* Tabla de Totales */
+.control-form .table-summary-control {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.control-form .table-summary-control th,
+.control-form .table-summary-control td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 33.33%;
+}
+
+/* Sobre visita efectuada */
+.header-right{
+    position: relative;
+    left: 680px;
+    color: black;
+}
+
+.logo-vane{
+    position: relative;
+    width: 120px;
+    left: 380px;
+}
+
+.numero-control{
+    color: #8B0000;
+    margin-left: 5px;
+}
+
+/* Ajustes para Item Secundario */
+.control-form .item-secundario {
+    font-size: 1.2rem; /* Tamaño de fuente más grande */
+    font-weight: 600; /* Peso de fuente más grueso */
+    color: #333333; /* Color más oscuro */
+}
+
+/* Ajustes para Item Principal */
+.control-form .item-principal {
+    font-size: 1.2rem; /* Tamaño de fuente más grande */
+    font-weight: bold; /* Texto en negrita */
+    color: black; /* Color del texto */
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 4px;
+}
+
+/* Botón flotante */
+.floating-button-container {
+    position: fixed;
+    bottom: 20px; /* Distancia desde la parte inferior de la pantalla */
+    right: 20px; /* Distancia desde el lado derecho de la pantalla */
+    z-index: 1000; /* Asegura que el botón esté siempre encima de otros elementos */
+}
+
+.floating-button-container .btn {
+    padding: 10px 15px; /* Ajusta el tamaño del botón */
+    font-size: 14px; /* Ajusta el tamaño de la fuente */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #6c757d; /* Color de fondo (personalizable) */
+    color: white; /* Color del texto */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Añade una sombra al botón */
+}
+
+.floating-button-container .btn:hover {
+    background-color: #5a6268;
+    color: #fff;
+}
+
+textarea.form-control.input-light-gray {
+    text-align: left; /* Asegura que el texto comience desde la izquierda */
+    padding-left: 10px; /* Espaciado desde el borde izquierdo */
+    cursor: text; /* Asegura que el cursor sea de texto al entrar */
+}
+
+/* Estilos generales para impresión */
+@media print {
+    /* Si estamos en modo imprimible, oculta todo lo que no sea la vista simplificada */
+    .printable-mode .dios-header,
+    .printable-mode .dios-filtros,
+    .printable-mode .dios-lista,
+    .printable-mode .dios-volver,
+    .printable-mode .header-control,
+    .printable-mode .sobre-visita,
+    .printable-mode .numero-control,
+    .printable-mode .control-form-root > .container.control-form > :not(.printable-view) {
+        display: none !important;
+    }
+}

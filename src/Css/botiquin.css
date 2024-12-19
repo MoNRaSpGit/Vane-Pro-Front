@@ -1,0 +1,175 @@
+/* Fondo general del contenedor raíz */
+/* Fondo general del contenedor raíz */
+.botiquin-container-root {
+    --color-primary: #1f4037; /* Verde oscuro con tonos naturales */
+    --color-secondary: #99a8a8; /* Gris oliva oscuro */
+
+    --background-light: rgba(255, 255, 255, 0.2);
+    --background-hover: rgba(255, 255, 255, 0.3);
+
+
+    min-height: 100vh;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    background: linear-gradient(to right, var(--color-primary), var(--color-secondary)); /* Degradado */
+    color: white; /* Texto blanco */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden; /* Evita contenido desbordado */
+}
+
+
+/* Contenedor del formulario */
+.botiquin-container {
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 10px; /* Bordes redondeados */
+    background-color: #ffffff; /* Fondo blanco para el formulario */
+    color: #000000; /* Texto negro */
+    background-color: var(--background-hover); /* Fondo translúcido */
+}
+
+/* Encabezado */
+.botiquin-header {
+    margin-bottom: 20px;
+}
+
+.titulo-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.botiquin-titulo {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+
+.botiquin-logo {
+    position: absolute;
+    right: 0;
+    height: 70px;
+    max-width: 100px;
+}
+
+.botiquin-datos-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.responsable,
+.fecha {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.botiquin-input {
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+
+
+/* Tabla */
+.botiquin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 4px; /* Bordes redondeados */
+}
+
+.botiquin-table th,
+.botiquin-table td {
+    text-align: center;
+    border: 1px solid;
+    padding: 8px;
+}
+
+.botiquin-table th {
+    font-weight: bold;
+}
+
+.botiquin-table td input {
+    all: unset;
+    box-sizing: border-box;
+    width: 90%;
+    padding: 5px;
+    border: none; /* Sin bordes */
+    background: transparent; /* Sin fondo */
+    text-align: center;
+    box-shadow: none; /* Sin sombras */
+    outline: none; /* Sin contornos */
+}
+
+.botiquin-footer {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.botiquin-footer-label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.botiquin-observaciones {
+    width: 100%;
+    height: 100px;
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 1rem;
+    resize: none;
+}
+
+
+.botiquin-datos-row .botiquin-input {
+    background-color: rgba(255, 255, 255, 0.5); /* Fondo más claro */
+    color: #000000; /* Texto negro */
+    border: 1px solid rgba(255, 255, 255, 0.8); /* Borde sutil */
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    box-shadow: none; /* Sin sombras */
+}
+
+
+.floating-button-container {
+    position: fixed;
+    bottom: 20px; /* Distancia desde la parte inferior de la pantalla */
+    right: 20px; /* Distancia desde el lado derecho de la pantalla */
+    z-index: 1000; /* Asegura que el botón esté siempre encima de otros elementos */
+}
+
+.floating-button-container .btn {
+    padding: 10px 15px; /* Ajusta el tamaño del botón */
+    font-size: 14px; /* Ajusta el tamaño de la fuente */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #6c757d; /* Color de fondo (personalizable) */
+    color: white; /* Color del texto */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Añade una sombra al botón */
+}
+
+.floating-button-container .btn:hover {
+    background-color: #5a6268; /* Color de fondo al pasar el cursor */
+    color: #fff; /* Asegura que el texto sea visible */
+}

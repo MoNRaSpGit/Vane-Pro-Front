@@ -1,0 +1,123 @@
+/* DiosExiste.css (o vista.css) */
+
+/* Contenedor principal del componente DiosExiste */
+.dios-root {
+    background: linear-gradient(to right, #1c2833, #34495e);
+    color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Encabezado */
+.dios-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.dios-header h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #f8f9fa;
+}
+
+/* Filtros */
+.dios-filtros {
+    background-color: #2c3e50;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.dios-filtros label {
+    font-weight: bold;
+    color: #f1f1f1;
+}
+
+.dios-filtros .form-control {
+    border: none;
+    background-color: #34495e;
+    color: #f8f9fa;
+}
+
+.dios-filtros .form-control:focus {
+    background-color: #3e5261;
+    box-shadow: none;
+    border: 1px solid #1abc9c;
+}
+
+/* Botón Filtrar */
+.dios-button {
+    background-color: #1abc9c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.dios-button:hover {
+    background-color: #16a085;
+}
+
+/* Lista de formularios */
+.dios-lista {
+    background-color: #2c3e50;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.dios-item {
+    background-color: #34495e;
+    border: 1px solid #2c3e50;
+    color: #f8f9fa;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.dios-item:hover {
+    background-color: #3e5261;
+    transform: scale(1.02);
+}
+
+.dios-item span {
+    font-weight: 500;
+}
+
+/* Botón Volver */
+.dios-volver {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.dios-volver:hover {
+    background-color: #c0392b;
+}
+
+/* Mensajes de carga y error */
+.dios-mensaje {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.dios-cargando {
+    color: #f39c12;
+}
+
+.dios-error {
+    color: #e74c3c;
+}

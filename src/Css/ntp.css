@@ -1,0 +1,77 @@
+.ntp-root{
+    --color-primary: #1c2833; /* Azul oscuro profesional */
+    --color-secondary: #34495e; /* Gris azulado oscuro */
+    background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+}
+
+.container{
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo translúcido */
+    border: 1px solid black;
+}
+
+.ntp-logo{
+    max-width: 120px;
+}
+
+
+
+.ntp-root input, 
+.ntp-root textarea, 
+.ntp-root select {
+    background-color: rgba(255, 255, 255, 0.2);
+    
+    
+}
+
+
+.ntp-root input:focus, 
+.ntp-root textarea:focus, 
+.ntp-root select:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+   
+   
+}
+
+.ntp-root label {
+    color: white;
+}
+
+
+.ntp-input.form-control[type="date"],
+.ntp-input.form-control[type="time"] {
+   text-align: center;
+}
+
+
+.floating-button-container {
+    position: fixed;
+    bottom: 20px; /* Distancia desde la parte inferior de la pantalla */
+    right: 20px; /* Distancia desde el lado derecho de la pantalla */
+    z-index: 1000; /* Asegura que el botón esté siempre encima de otros elementos */
+}
+
+.floating-button-container .btn {
+    padding: 10px 15px; /* Ajusta el tamaño del botón */
+    font-size: 14px; /* Ajusta el tamaño de la fuente */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #6c757d; /* Color de fondo (personalizable) */
+    color: white; /* Color del texto */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Añade una sombra al botón */
+}
+
+.floating-button-container .btn:hover {
+    background-color: #5a6268; /* Color de fondo al pasar el cursor */
+    color: #fff; /* Asegura que el texto sea visible */
+}
+
+
+
+
+
+
+
+
+
+
+
+
