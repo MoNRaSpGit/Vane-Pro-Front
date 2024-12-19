@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "../Css/controlCss.css";
+import logo from "../imagenes/logoVane.png"; // Asegúrate de tener el logo importado
 
 const VistaControlOperacionalSimplificada = ({ data, onBack }) => {
     const {
@@ -15,6 +16,15 @@ const VistaControlOperacionalSimplificada = ({ data, onBack }) => {
         indice_co,
         items
     } = data;
+
+    const [showBackButton, setShowBackButton] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowBackButton(true);
+        }, 3000);
+        return () => clearTimeout(timer);
+    }, []);
 
     const formattedFecha = new Date(fecha).toLocaleDateString('es-ES');
 
@@ -32,8 +42,28 @@ const VistaControlOperacionalSimplificada = ({ data, onBack }) => {
 
     return (
         <div className="control-form-root printable-mode">
+            {/* Botón para volver */}
+            {showBackButton && (
+                <button
+                    className="btn dios-volver"
+                    style={{
+                        position: 'absolute',
+                        top: '50px', // Más abajo
+                        left: '50px', // Más a la derecha
+                        zIndex: 1000,
+                    }}
+                    onClick={onBack}
+                >
+                    Volver a la Lista
+                </button>
+            )}
+
             <div className="container control-form mt-5 printable-view">
-                <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Control Operacional Simplificado</h1>
+                {/* Encabezado con logo */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', marginBottom: '20px' }}>
+                    <h1 style={{ textAlign: 'center', margin: 0 }}>Control Operacional</h1>
+                    <img src={logo} alt="Logo" style={{ height: '60px', position: 'absolute', right: 0 }} />
+                </div>
 
                 {/* Encabezado en una sola fila */}
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginBottom: '20px', justifyContent: 'space-between' }}>
@@ -79,23 +109,7 @@ const VistaControlOperacionalSimplificada = ({ data, onBack }) => {
                     <p><strong>Índice CO:</strong> {indice_co}%</p>
                     <p><strong>Observaciones:</strong> {observaciones}</p>
                     <div>
-                        <button
-                            className="btn btn-primary"
-                            onClick={() => {
-                                console.log("Botón 'Volver al Filtrado' clickeado");
-                                onBack();
-                            }}
-                            style={{ marginRight: '10px' }}
-                        >
-                            Volver al Filtrado
-                        </button>
-                        <button
-                            className="btn btn-success print-button"
-                            onClick={handlePrint}
-                        >
-                            Imprimir
-                        </button>
-                    </div>
+                                            </div>
                 </div>
             </div>
         </div>

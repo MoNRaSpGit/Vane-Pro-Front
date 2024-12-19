@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import VistaControlOperacional from "./VistaControlOperacional";
 import VistaControlOperacionalSimplificada from "./VistaControlOperacionalSimplificada";
 import VistaNTP330 from "./VistaNTP330";
@@ -14,8 +14,11 @@ const DiosExiste = () => {
     const [selectedFormulario, setSelectedFormulario] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-
     const [isSimplified, setIsSimplified] = useState(false);
+
+    // Nuevo estado para controlar la visibilidad de los filtros y botones
+    const [showFilters, setShowFilters] = useState(true);
+    const [showButtons, setShowButtons] = useState(true);
 
     const handleFiltrar = async () => {
         if (!empresa || !fecha || !formulario) {
@@ -47,10 +50,40 @@ const DiosExiste = () => {
         }
     };
 
+    const handlePrintAndHideFilters = () => {
+        // Si el formulario es "control-operacional", redirigir a VistaControlOperacionalSimplificada
+        if (formulario === "control-operacional" && selectedFormulario) {
+            setIsSimplified(true);
+            setTimeout(() => {
+                window.print();
+                setTimeout(() => {
+                    setShowButtons(true); // Mostrar los botones después de la impresión
+                }, 100);
+            }, 1000);
+        } else {
+            setShowFilters(false);
+            setShowButtons(false);
+
+            // Retraso antes de iniciar la impresión
+            setTimeout(() => {
+                window.print();
+
+                // Volver a mostrar los botones después de 10 segundos
+                setTimeout(() => {
+                    setShowButtons(true);
+                }, 10000);
+            }, 1000);
+        }
+    };
+
+
     const renderVistaFormulario = (formularioData) => {
         if (isSimplified && formulario === "control-operacional") {
             // Mostrar versión simplificada
-            return <VistaControlOperacionalSimplificada data={formularioData} />;
+            return <VistaControlOperacionalSimplificada data={formularioData} onBack={() => {
+                setIsSimplified(false);
+                setShowFilters(true);
+            }} />;
         }
 
         switch (formulario) {
@@ -74,7 +107,7 @@ const DiosExiste = () => {
 
     return (
         <div className="dios-root">
-            {!isSimplified && (
+            {!isSimplified && showFilters && (
                 <>
                     <div className="dios-header">
                         <h2>Gestor de Formularios</h2>
@@ -147,14 +180,26 @@ const DiosExiste = () => {
 
             {selectedFormulario && !isSimplified && (
                 <div className="dios-contenedor-formulario dios-root">
-                    <button
-                        className="dios-volver mb-3"
-                        onClick={() => {
-                            setSelectedFormulario(null);
-                        }}
-                    >
-                        Volver a la Lista
-                    </button>
+                    {showButtons && (
+                        <>
+                            <button
+                                className="dios-volver mb-3"
+                                onClick={() => {
+                                    setSelectedFormulario(null);
+                                    setShowFilters(true); // Mostrar los filtros al volver
+                                }}
+                            >
+                                Volver a la Lista
+                            </button>
+                            <button
+                                className="dios-volver mb-3 ml-2"
+                                onClick={handlePrintAndHideFilters}
+                            >
+                                Imprimir
+                            </button>
+                        </>
+                    )}
+
                     {renderVistaFormulario(selectedFormulario)}
                 </div>
             )}
@@ -164,6 +209,7 @@ const DiosExiste = () => {
                     data={selectedFormulario}
                     onBack={() => {
                         setSelectedFormulario(null); // Regresa a la lista de formularios
+                        setShowFilters(true); // Mostrar los filtros al volver
                         setIsSimplified(false); // Desactiva la vista simplificada
                     }}
                 />

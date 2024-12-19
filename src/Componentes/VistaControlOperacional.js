@@ -36,16 +36,7 @@ const VistaControlOperacional = ({ data, onSimplify }) => {
 
     return (
         <div className="control-form-root">
-            <div className="container control-form mt-5">
-                <div className="mb-3 toggle-container">
-                    <button
-                        className="btn btn-primary toggle-button"
-                        onClick={handleSimplify}
-                    >
-                        Simplificar para Imprimir
-                    </button>
-                </div>
-
+            <div className="container control-form mt-5">   
                 <header className="header-control mb-4">
                     <h1 className="titulo-formulario">Control Operacional de Seguridad</h1>
                     <div className="header-right">
