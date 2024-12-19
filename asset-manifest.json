@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Vane-Pro-Front/static/css/main.2ec69796.css",
+    "main.js": "/Vane-Pro-Front/static/js/main.9c6aaaf8.js",
+    "static/js/488.a2d92449.chunk.js": "/Vane-Pro-Front/static/js/488.a2d92449.chunk.js",
+    "static/media/logoVane.png": "/Vane-Pro-Front/static/media/logoVane.75b595138eba7aa3292e.png",
+    "index.html": "/Vane-Pro-Front/index.html",
+    "main.2ec69796.css.map": "/Vane-Pro-Front/static/css/main.2ec69796.css.map",
+    "main.9c6aaaf8.js.map": "/Vane-Pro-Front/static/js/main.9c6aaaf8.js.map",
+    "488.a2d92449.chunk.js.map": "/Vane-Pro-Front/static/js/488.a2d92449.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2ec69796.css",
+    "static/js/main.9c6aaaf8.js"
+  ]
+}
