@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Vane-Pro-Front/static/css/main.0b660aa9.css",
-    "main.js": "/Vane-Pro-Front/static/js/main.562cc9b1.js",
+    "main.css": "/Vane-Pro-Front/static/css/main.e0601b87.css",
+    "main.js": "/Vane-Pro-Front/static/js/main.39af0082.js",
     "static/js/488.a2d92449.chunk.js": "/Vane-Pro-Front/static/js/488.a2d92449.chunk.js",
     "static/media/logoVane.png": "/Vane-Pro-Front/static/media/logoVane.75b595138eba7aa3292e.png",
     "index.html": "/Vane-Pro-Front/index.html",
-    "main.0b660aa9.css.map": "/Vane-Pro-Front/static/css/main.0b660aa9.css.map",
-    "main.562cc9b1.js.map": "/Vane-Pro-Front/static/js/main.562cc9b1.js.map",
+    "main.e0601b87.css.map": "/Vane-Pro-Front/static/css/main.e0601b87.css.map",
+    "main.39af0082.js.map": "/Vane-Pro-Front/static/js/main.39af0082.js.map",
     "488.a2d92449.chunk.js.map": "/Vane-Pro-Front/static/js/488.a2d92449.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0b660aa9.css",
-    "static/js/main.562cc9b1.js"
+    "static/css/main.e0601b87.css",
+    "static/js/main.39af0082.js"
   ]
 }
