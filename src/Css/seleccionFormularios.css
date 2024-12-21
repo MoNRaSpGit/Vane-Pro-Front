@@ -10,16 +10,16 @@
 /* Contenedor de bienvenida */
 .formulario-bienvenida {
     position: relative;
-    text-align: center; /* Centramos el contenido principal */
+    text-align: center;
     margin-bottom: 30px;
 }
 
 .formulario-bienvenida-titulo {
     font-size: 2.5rem;
     margin-bottom: 10px;
-    text-align: center; /* Título centrado */
+    text-align: center;
     position: relative;
-    z-index: 1; /* Mantiene el texto por encima del logo */
+    z-index: 1;
 }
 
 .formulario-bienvenida-subtitulo {
@@ -27,19 +27,72 @@
     opacity: 0.9;
 }
 
-/* Logo alineado a la derecha */
+/* Logo alineado a la derecha con dropdown */
 .formulario-logo {
     position: absolute;
-    right: 20px; /* Logo en la esquina derecha */
+    right: 20px;
     top: 50%;
-    transform: translateY(-50%); /* Centrado verticalmente */
+    transform: translateY(-50%);
     height: 80px;
     width: auto;
     object-fit: contain;
+    cursor: pointer;
+}
+
+/* Dropdown */
+.dropdown-menu {
+    position: absolute;
+    right: 20px;
+    top: calc(50% + 50px);
+    background: #2c3e50;
+    border: 1px solid #34495e;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    display: block;
+    opacity: 1;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.dropdown-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    color: #f8f9fa;
+    font-size: 20px;
+}
+
+.dropdown-item {
+    padding: 10px;
+    background: #34495e;
+    border-radius: 5px;
+    text-align: center;
+    color: #f8f9fa;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background: #1c2833;
+}
+
+/* Animación del dropdown */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Grid de tarjetas */
 .formulario-seleccion-grid {
+    padding-top: 105px; 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
@@ -72,3 +125,10 @@
     font-size: 1rem;
     opacity: 0.8;
 }
+
+
+.dropdown-header svg {
+    margin-left: -12px; /* Mueve el ícono más a la izquierda */
+    margin-right: 10px; /* Mantén el espacio entre el ícono y el texto */
+}
+

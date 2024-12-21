@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Css/seleccionFormularios.css";
+import { FaUserCircle } from "react-icons/fa";
 import logo from "../imagenes/logoVane.png";
 
-const SeleccionFormularios = ({ onSeleccionarFormulario, usuario }) => {
+const SeleccionFormularios = ({ onSeleccionarFormulario, usuario, onCerrarSesion }) => {
+    const [dropdownVisible, setDropdownVisible] = useState(false);
+
+    const toggleDropdown = () => {
+        setDropdownVisible(!dropdownVisible);
+    };
+
     const formularios = [
         { id: "control", titulo: "Control Operacional", descripcion: "Formulario para control de operaciones." },
         { id: "botiquin", titulo: "Botiquín", descripcion: "Formulario para gestión de botiquines." },
@@ -26,7 +33,26 @@ const SeleccionFormularios = ({ onSeleccionarFormulario, usuario }) => {
                 <p className="formulario-bienvenida-subtitulo">
                     Selecciona el formulario en el que deseas trabajar.
                 </p>
-                <img src={logo} alt="Logo Vane" className="formulario-logo" />
+                <img
+                    src={logo}
+                    alt="Logo Vane"
+                    className="formulario-logo"
+                    onClick={toggleDropdown}
+                />
+                {dropdownVisible && (
+                    <div className="dropdown-menu">
+                        <div className="dropdown-header">
+                            <FaUserCircle size={30} />
+                            <span>{usuario.nombre}</span>
+                        </div>
+                        <div
+                            className="dropdown-item"
+                            onClick={onCerrarSesion}
+                        >
+                            Cerrar sesión
+                        </div>
+                    </div>
+                )}
             </div>
 
             <div className="formulario-seleccion-grid">

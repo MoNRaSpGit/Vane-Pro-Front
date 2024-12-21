@@ -3,6 +3,8 @@ import logoVane from "../imagenes/logoVane.png";
 import "../Css/controlCss.css";
 
 const VistaControlOperacional = ({ data, onSimplify }) => {
+
+    console.log('VistaControlOperacional - Recibido data:', data); // Log extra
     const {
         empresa,
         obra,

@@ -5,8 +5,15 @@ import VistaNTP330 from "./VistaNTP330";
 import VistaAccidente from "./VistaAccidente";
 import VistaBotiquin from "./VistaBotiquin";
 import "../Css/vista.css";
+import logo from "../imagenes/logoVane.png"; // Importar el logo
+import { FaUserCircle } from "react-icons/fa"; // Importar el ícono
 
-const DiosExiste = () => {
+
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+
+const DiosExiste = ({ onCerrarSesion }) => {
     const [data, setData] = useState([]);
     const [empresa, setEmpresa] = useState('');
     const [fecha, setFecha] = useState('');
@@ -16,11 +23,80 @@ const DiosExiste = () => {
     const [error, setError] = useState(null);
     const [isSimplified, setIsSimplified] = useState(false);
 
+
+
+    const [mostrarInput, setMostrarInput] = useState(false); // Controla si el input está visible
+    const [nuevaEmpresa, setNuevaEmpresa] = useState(""); // Almacena el nombre de la nueva empresa
+
+    const manejarClickBoton = async () => {
+        if (mostrarInput && nuevaEmpresa.trim() !== "") {
+            try {
+                const response = await fetch("http://localhost:5000/api/empresas", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ nombre: nuevaEmpresa }),
+                });
+    
+                const data = await response.json(); // Verifica que estás obteniendo correctamente los datos
+                console.log('Respuesta del backend:', data); // Log para confirmar qué llega del backend
+    
+                if (!response.ok) {
+                    throw new Error(data.message || "Error al insertar la empresa");
+                }
+    
+                toast.success(`Empresa agregada correctamente: ${data.nombre}`, {
+                    position: "top-right",
+                    autoClose: 3000,
+                });
+            } catch (error) {
+                toast.error("Hubo un error al agregar la empresa", {
+                    position: "top-right",
+                    autoClose: 3000,
+                });
+                console.error("Error:", error);
+            }
+        }
+    
+        setMostrarInput(!mostrarInput);
+        if (!mostrarInput) {
+            setNuevaEmpresa("");
+        }
+    };
+    
+
+
+
+    const manejarCambioInput = (e) => {
+        setNuevaEmpresa(e.target.value); // Almacena el valor del input
+    };
+
+
+
+
+
     // Nuevo estado para controlar la visibilidad de los filtros y botones
     const [showFilters, setShowFilters] = useState(true);
     const [showButtons, setShowButtons] = useState(true);
 
+
+
+
+
+
+
+
+    const [dropdownVisible, setDropdownVisible] = useState(false);
+
+    const toggleDropdown = () => {
+        setDropdownVisible(!dropdownVisible);
+    };
+
+
     const handleFiltrar = async () => {
+        console.log('Iniciando filtro con:', { empresa, fecha, formulario }); // Verifica los valores
+
         if (!empresa || !fecha || !formulario) {
             alert("Debe seleccionar empresa, fecha y tipo de formulario.");
             return;
@@ -35,20 +111,32 @@ const DiosExiste = () => {
             const response = await fetch(
                 `http://localhost:5000/api/filtrar?empresa=${empresa}&fecha=${fecha}&formulario=${formulario}`
             );
-            if (!response.ok) throw new Error("Error al obtener los datos del servidor");
+
+            console.log('Fecha enviada al backend:', fecha); // Verifica el formato enviado
+
+            if (!response.ok) {
+                throw new Error("Error al obtener los datos del servidor");
+            }
 
             const jsonData = await response.json();
+            console.log('Datos recibidos del servidor:', jsonData); // Verifica los datos JSON recibidos
+
             if (jsonData.mensaje) {
                 setData([]);
                 alert(jsonData.mensaje);
-            } else setData(jsonData);
+            } else {
+                setData(jsonData);
+            }
         } catch (err) {
-            console.error(err);
+            console.error('Error al filtrar:', err); // Log de errores
             setError(err.message);
         } finally {
             setLoading(false);
+            console.log('Filtro completado.'); // Indica que el proceso de filtro terminó
         }
     };
+
+
 
     const handlePrintAndHideFilters = () => {
         // Si el formulario es "control-operacional", redirigir a VistaControlOperacionalSimplificada
@@ -107,11 +195,48 @@ const DiosExiste = () => {
 
     return (
         <div className="dios-root">
+
             {!isSimplified && showFilters && (
                 <>
                     <div className="dios-header">
                         <h2>Gestor de Formularios</h2>
+                        <img
+                            src={logo}
+                            alt="Logo Vane"
+                            className="dios-logo"
+                            onClick={toggleDropdown}
+                        />
+                        {dropdownVisible && (
+                            <div className="dropdown-menu">
+                                <div className="dropdown-header">
+                                    <FaUserCircle size={30} />
+                                    <span>Admin</span>
+                                </div>
+                                <div
+                                    className="dropdown-item"
+                                    onClick={onCerrarSesion} // Llama a la función para cerrar sesión
+                                >
+                                    Cerrar sesión
+                                </div>
+                            </div>
+                        )}
                     </div>
+                    <div className="dios-maqueta">
+                        <button className="dios-maqueta-boton" onClick={manejarClickBoton}>
+                            {mostrarInput ? "Aceptar" : "Agregar Empresa"} {/* Cambia el texto del botón */}
+                        </button>
+                        {mostrarInput && (
+                            <input
+                                type="text"
+                                className="dios-input"
+                                placeholder="Ingrese el nombre de la empresa"
+                                value={nuevaEmpresa}
+                                onChange={manejarCambioInput}
+                            />
+                        )}
+                        <ToastContainer />
+                    </div>
+
 
                     <div className="dios-filtros row">
                         <div className="col-md-4">

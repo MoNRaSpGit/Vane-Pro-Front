@@ -6,23 +6,29 @@ import FormularioNTP from "./Componentes/FormularioNTP";
 import SeleccionFormularios from "./Componentes/SeleccionFormularios";
 import DiosExiste from "./Componentes/DiosExiste";
 import Login from "./Componentes/Login";
-import Registro from "./Componentes/Registro"; // Importar el componente Registro
+import Registro from "./Componentes/Registro";
 
 function App() {
-    const [usuario, setUsuario] = useState(null); // Estado para manejar el usuario autenticado
-    const [formularioActual, setFormularioActual] = useState(null); // Estado para manejar el formulario actual
-    const [vistaActual, setVistaActual] = useState("login"); // Manejar si estamos en login o registro
+    const [usuario, setUsuario] = useState(null);
+    const [formularioActual, setFormularioActual] = useState(null);
+    const [vistaActual, setVistaActual] = useState("login");
 
     const handleLogin = (user) => {
-        setUsuario(user); // Guardar los datos del usuario (nombre, rol, etc.)
+        console.log("Usuario autenticado en App.js:", user);
+        setUsuario(user);
     };
 
     const handleRegistroExitoso = () => {
-        setVistaActual("login"); // Volver al login después de un registro exitoso
+        setVistaActual("login");
+    };
+
+    const handleCerrarSesion = () => {
+        setUsuario(null); // Restablece el estado de usuario para cerrar sesión
+        setVistaActual("login"); // Vuelve a la vista de login
     };
 
     const handleVolver = () => {
-        setFormularioActual(null); // Regresa al selector de formularios
+        setFormularioActual(null);
     };
 
     const renderFormulario = () => {
@@ -39,14 +45,14 @@ function App() {
                 return (
                     <SeleccionFormularios
                         onSeleccionarFormulario={(form) => setFormularioActual(form)}
-                        usuario={usuario} // Pasamos el nombre del usuario autenticado
+                        usuario={usuario}
+                        onCerrarSesion={handleCerrarSesion} // Pasa la función de cerrar sesión
                     />
                 );
         }
     };
 
     if (!usuario) {
-        // Si no hay usuario autenticado, mostrar login o registro según corresponda
         return vistaActual === "login" ? (
             <Login onLogin={handleLogin} onSwitchToRegister={() => setVistaActual("registro")} />
         ) : (
@@ -55,7 +61,7 @@ function App() {
     }
 
     if (usuario.rol === "admin") {
-        return <DiosExiste />;
+        return <DiosExiste onCerrarSesion={handleCerrarSesion} />;
     }
 
     return (
