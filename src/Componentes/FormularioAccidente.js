@@ -83,7 +83,7 @@ const FormularioAccidente = ({ onVolver }) => {
         });
 
         try {
-            const response = await fetch('http://localhost:5000/api/accidente', {
+            const response = await fetch('https://vane-pro-back.onrender.com/api/accidente', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)

@@ -137,7 +137,7 @@ const FormularioControl = ({ onVolver }) => {
         };
 
         try {
-            const response = await fetch('http://localhost:5000/api/control-operacional', {
+            const response = await fetch('https://vane-pro-back.onrender.com/api/control-operacional', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

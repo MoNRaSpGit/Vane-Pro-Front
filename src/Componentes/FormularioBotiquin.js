@@ -80,7 +80,7 @@ const FormularioBotiquin = ({ onVolver }) => {
         });
 
         try {
-            const response = await fetch('http://localhost:5000/api/botiquin', {
+            const response = await fetch('https://vane-pro-back.onrender.com/api/botiquin', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)

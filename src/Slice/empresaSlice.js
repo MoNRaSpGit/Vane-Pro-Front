@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 // Thunk para cargar las empresas desde el backend
 export const fetchEmpresas = createAsyncThunk("empresas/fetchEmpresas", async () => {
-    const response = await fetch("http://localhost:5000/api/empresas");
+    const response = await fetch("https://vane-pro-back.onrender.com/api/empresas");
 
     if (!response.ok) {
         throw new Error("Error al cargar las empresas");

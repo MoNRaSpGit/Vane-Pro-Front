@@ -36,13 +36,14 @@ const DiosExiste = ({ onCerrarSesion }) => {
     const manejarClickBoton = async () => {
         if (mostrarInput && nuevaEmpresa.trim() !== "") {
             try {
-                const response = await fetch("http://localhost:5000/api/empresas", {
+                const response = await fetch("https://vane-pro-back.onrender.com/api/empresas", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({ nombre: nuevaEmpresa }),
                 });
+                
 
                 const data = await response.json(); // Verifica que estás obteniendo correctamente los datos
                 console.log('Respuesta del backend:', data); // Log para confirmar qué llega del backend
@@ -114,8 +115,9 @@ const DiosExiste = ({ onCerrarSesion }) => {
 
         try {
             const response = await fetch(
-                `http://localhost:5000/api/filtrar?empresa=${empresa}&fecha=${fecha}&formulario=${formulario}`
+                `https://vane-pro-back.onrender.com/api/filtrar?empresa=${empresa}&fecha=${fecha}&formulario=${formulario}`
             );
+            
 
             console.log('Fecha enviada al backend:', fecha); // Verifica el formato enviado
 
