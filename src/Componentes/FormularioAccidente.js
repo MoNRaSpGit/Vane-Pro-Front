@@ -4,12 +4,16 @@ import "react-toastify/dist/ReactToastify.css";
 import RowAccidente from '../Estructura/rowAccidentes';
 import '../Css/accidente.css';
 import logo from '../imagenes/logoVane.png';
+import { useSelector } from 'react-redux';
+
 
 const FormularioAccidente = ({ onVolver }) => {
     const [empresa, setEmpresa] = useState('');
     const [horaActual, setHoraActual] = useState('');
     const [rut, setRut] = useState('');
     const [observaciones, setObservaciones] = useState(''); // Estado para Observaciones
+    const empresas = useSelector((state) => state.empresas.empresas);
+
 
     useEffect(() => {
         const ahora = new Date();
@@ -145,9 +149,11 @@ const FormularioAccidente = ({ onVolver }) => {
                                 onChange={(e) => setEmpresa(e.target.value)}
                             >
                                 <option value="">Seleccionar empresa</option>
-                                <option value="MEVIR">MEVIR</option>
-                                <option value="FRIGORIFICO">FRIGORIFICO</option>
-                                <option value="MONRA COMPANY">MONRA COMPANY</option>
+                                {empresas.map((empresa) => (
+                                    <option key={empresa.id} value={empresa.nombre}>
+                                        {empresa.nombre}
+                                    </option>
+                                ))}
                             </select>
                         </div>
                     </div>

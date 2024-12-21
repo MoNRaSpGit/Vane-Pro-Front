@@ -13,7 +13,7 @@ const VistaNTP330 = ({ data }) => {
         valuesMap[i.nombre_campo] = i.valor;
     });
 
-    const inputStyle = { border: "1px solid red" };
+    const inputStyle = { border: "1px solid black" };
 
     return (
         <div className="ntp-root">

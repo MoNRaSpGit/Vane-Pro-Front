@@ -6,6 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 import rowNTP330 from "../Estructura/row360"; // Importar los campos dinámicos
 import logo from "../imagenes/logoVane.png";
 import "../Css/ntp.css";
+import { useSelector } from 'react-redux';
+
 
 const FormularioNTP = ({ onVolver }) => {
     const [empresa, setEmpresa] = useState('');
@@ -15,6 +17,8 @@ const FormularioNTP = ({ onVolver }) => {
     const [hora, setHora] = useState('');
     const [rut, setRut] = useState('');
     const [observaciones, setObservaciones] = useState('');
+    const empresas = useSelector((state) => state.empresas.empresas);
+
 
     // Estados para campos dinámicos
     const [dynamicFields, setDynamicFields] = useState({});
@@ -164,10 +168,17 @@ const FormularioNTP = ({ onVolver }) => {
                             required
                         >
                             <option value="">Seleccionar empresa</option>
-                            <option value="MEVIR">MEVIR</option>
-                            <option value="FRIGORIFICO">FRIGORIFICO</option>
-                            <option value="MONRA COMPANY">MONRA COMPANY</option>
+                            {empresas.length > 0 ? (
+                                empresas.map((empresa) => (
+                                    <option key={empresa.id} value={empresa.nombre}>
+                                        {empresa.nombre}
+                                    </option>
+                                ))
+                            ) : (
+                                <option value="">No hay empresas disponibles</option>
+                            )}
                         </select>
+
                     </div>
                     <div className="row mb-3">
                         <div className="col-md-6 ntp-group">

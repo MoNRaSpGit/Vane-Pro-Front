@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { fetchEmpresas } from "../Slice/empresaSlice"; // Importar la acción
 import "../Css/login.css";
 
 const Login = ({ onLogin, onSwitchToRegister }) => {
@@ -6,8 +8,9 @@ const Login = ({ onLogin, onSwitchToRegister }) => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
+    const dispatch = useDispatch(); // Acceder al dispatcher de Redux
+
     const handleLogin = async (e) => {
-        
         e.preventDefault();
         setError("");
 
@@ -24,6 +27,7 @@ const Login = ({ onLogin, onSwitchToRegister }) => {
 
             const data = await response.json();
             onLogin(data); // Envía el usuario autenticado al App.js
+            dispatch(fetchEmpresas()); // Carga las empresas en el store global
         } catch (err) {
             setError(err.message);
         }

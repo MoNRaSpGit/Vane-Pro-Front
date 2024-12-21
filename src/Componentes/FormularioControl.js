@@ -4,11 +4,17 @@ import 'react-toastify/dist/ReactToastify.css';
 import rowData from '../Estructura/rowControl';
 import logoVane from "../imagenes/logoVane.png";
 import "../Css/controlCss.css";
+import { useSelector } from 'react-redux';
+
 
 const FormularioControl = ({ onVolver }) => {
     const [fechaActual, setFechaActual] = useState('');
     const [horaActual, setHoraActual] = useState('');
     const [empresa, setEmpresa] = useState('');
+
+    const empresas = useSelector((state) => state.empresas.empresas);
+
+
     const [controlValues, setControlValues] = useState(() => {
         const initialValues = {};
         rowData.forEach(item => {
@@ -193,10 +199,13 @@ const FormularioControl = ({ onVolver }) => {
                                 onChange={(e) => setEmpresa(e.target.value)}
                             >
                                 <option value="">Seleccionar empresa</option>
-                                <option value="MEVIR">MEVIR</option>
-                                <option value="FRIGORIFICO">FRIGORIFICO</option>
-                                <option value="MONRA COMPANY">MONRA COMPANY</option>
+                                {empresas.map((empresa) => (
+                                    <option key={empresa.id} value={empresa.nombre}>
+                                        {empresa.nombre}
+                                    </option>
+                                ))}
                             </select>
+
                         </div>
                     </div>
 

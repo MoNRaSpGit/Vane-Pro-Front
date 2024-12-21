@@ -4,6 +4,8 @@ import "react-toastify/dist/ReactToastify.css";
 import botiquinRow from '../Estructura/rowBotiquin';
 import '../Css/botiquin.css';
 import logo from '../imagenes/logoVane.png';
+import { useSelector } from 'react-redux';
+
 
 const FormularioBotiquin = ({ onVolver }) => {
     const [cellStatus, setCellStatus] = useState(() => {
@@ -15,6 +17,8 @@ const FormularioBotiquin = ({ onVolver }) => {
         });
         return initialStatus;
     });
+
+    const empresas = useSelector((state) => state.empresas.empresas);
 
     const [empresa, setEmpresa] = useState('');
     const [responsable, setResponsable] = useState('');
@@ -133,12 +137,20 @@ const FormularioBotiquin = ({ onVolver }) => {
                     <div className="botiquin-datos-row">
                         <div className="responsable">
                             <label htmlFor="empresa">Empresa:</label>
-                            <select id="empresa" className="botiquin-input" value={empresa} onChange={(e) => setEmpresa(e.target.value)}>
+                            <select
+                                id="empresa"
+                                className="botiquin-input"
+                                value={empresa}
+                                onChange={(e) => setEmpresa(e.target.value)}
+                            >
                                 <option value="">Seleccionar empresa</option>
-                                <option value="MEVIR">MEVIR</option>
-                                <option value="FRIGORIFICO">FRIGORIFICO</option>
-                                <option value="MONRA COMPANY">MONRA COMPANY</option>
+                                {empresas.map((empresa) => (
+                                    <option key={empresa.id} value={empresa.nombre}>
+                                        {empresa.nombre}
+                                    </option>
+                                ))}
                             </select>
+
                         </div>
                         <div className="responsable">
                             <label htmlFor="responsable">Responsable:</label>

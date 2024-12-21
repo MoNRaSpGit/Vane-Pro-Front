@@ -7,6 +7,8 @@ import VistaBotiquin from "./VistaBotiquin";
 import "../Css/vista.css";
 import logo from "../imagenes/logoVane.png"; // Importar el logo
 import { FaUserCircle } from "react-icons/fa"; // Importar el ícono
+import { useSelector } from "react-redux";
+
 
 
 import { toast, ToastContainer } from "react-toastify";
@@ -23,6 +25,9 @@ const DiosExiste = ({ onCerrarSesion }) => {
     const [error, setError] = useState(null);
     const [isSimplified, setIsSimplified] = useState(false);
 
+    const empresas = useSelector((state) => state.empresas.empresas);
+
+
 
 
     const [mostrarInput, setMostrarInput] = useState(false); // Controla si el input está visible
@@ -38,14 +43,14 @@ const DiosExiste = ({ onCerrarSesion }) => {
                     },
                     body: JSON.stringify({ nombre: nuevaEmpresa }),
                 });
-    
+
                 const data = await response.json(); // Verifica que estás obteniendo correctamente los datos
                 console.log('Respuesta del backend:', data); // Log para confirmar qué llega del backend
-    
+
                 if (!response.ok) {
                     throw new Error(data.message || "Error al insertar la empresa");
                 }
-    
+
                 toast.success(`Empresa agregada correctamente: ${data.nombre}`, {
                     position: "top-right",
                     autoClose: 3000,
@@ -58,13 +63,13 @@ const DiosExiste = ({ onCerrarSesion }) => {
                 console.error("Error:", error);
             }
         }
-    
+
         setMostrarInput(!mostrarInput);
         if (!mostrarInput) {
             setNuevaEmpresa("");
         }
     };
-    
+
 
 
 
@@ -247,10 +252,18 @@ const DiosExiste = ({ onCerrarSesion }) => {
                                 onChange={(e) => setEmpresa(e.target.value)}
                             >
                                 <option value="">Seleccionar empresa</option>
-                                <option value="MEVIR">MEVIR</option>
-                                <option value="FRIGORIFICO">FRIGORIFICO</option>
-                                <option value="MONRA COMPANY">MONRA COMPANY</option>
+                                {empresas.length > 0 ? (
+                                    empresas.map((empresa) => (
+                                        <option key={empresa.id} value={empresa.nombre}>
+                                            {empresa.nombre}
+                                        </option>
+                                    ))
+                                ) : (
+                                    <option value="">No hay empresas disponibles</option>
+                                )}
                             </select>
+
+
                         </div>
                         <div className="col-md-4">
                             <label>Fecha:</label>
